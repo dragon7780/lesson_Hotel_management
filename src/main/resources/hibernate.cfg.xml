@@ -11,7 +11,8 @@
         <property name="show_sql">true</property>
 
         <!-- MAPPINGS -->
-
+        <mapping class="org.example.entity.RoomEntity"/>
+        <mapping class="org.example.entity.ConvenientEntity"/>
     </session-factory>
 
 </hibernate-configuration>
