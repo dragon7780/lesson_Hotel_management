@@ -12,6 +12,7 @@ public class RoomEntity {
     private Integer id;
     private Integer number;
     private Integer stage;
+    @Enumerated(value = EnumType.STRING)
     private RoomType type;
     private Double price;
     private Integer area;
