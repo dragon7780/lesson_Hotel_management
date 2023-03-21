@@ -6,6 +6,7 @@ import org.example.entity.RoomEntity;
 import org.example.enums.RoomType;
 import org.example.repository.ConvenientRepository;
 import org.example.repository.RoomRepository;
+import org.example.sevice.ConvenientService;
 import org.example.sevice.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ public class RoomController {
     @Autowired
     private RoomRepository roomRepository;
     @Autowired
-    private ConvenientRepository convenientRepository;
+    private ConvenientService convenientService;
     public void start() {
         boolean isTrue=true;
         while (isTrue){
@@ -44,8 +45,7 @@ public class RoomController {
         int room= ComponentContainer.intScanner.nextInt();
         System.out.println("Enter convenient id ");
         int con = ComponentContainer.intScanner.nextInt();
-        ConvenientEntity byId = convenientRepository.getById(room, con);
-        System.out.println(byId);
+        convenientService.saveConvenient(room,con);
     }
     private void findRoom() {
         System.out.println("Enter id: ");

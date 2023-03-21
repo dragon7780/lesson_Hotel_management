@@ -6,13 +6,15 @@ import org.example.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoomService {
     @Autowired
     private RoomRepository roomRepository;
     public boolean addRoom(int number, Integer stage, RoomType type, Double price, int area) {
-        RoomEntity roomByNum = roomRepository.getRoomByNum(number, stage);
-        if(roomByNum != null){
+        List<RoomEntity> roomByNum = roomRepository.getRoomByNum(number, stage);
+        if(roomByNum.size() != 0){
             return false;
         }
         RoomEntity room=new RoomEntity();
@@ -27,7 +29,7 @@ public class RoomService {
 
     public void deleteById(int id) {
         RoomEntity byId = roomRepository.getById(id);
-        if(byId != null){
+        if(byId == null){
             return;
         }
         roomRepository.deleteById(id);

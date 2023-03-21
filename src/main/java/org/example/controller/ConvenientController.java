@@ -1,14 +1,20 @@
 package org.example.controller;
 
 import org.example.component.ComponentContainer;
+import org.example.entity.ConvenientEntity;
 import org.example.repository.ConvenientRepository;
+import org.example.sevice.ConvenientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import java.util.List;
 
 @Controller
 public class ConvenientController {
     @Autowired
     private ConvenientRepository convenientRepository;
+    @Autowired
+    private ConvenientService convenientService;
     public void start() {
         boolean isTrue=true;
         while (isTrue){
@@ -28,8 +34,21 @@ public class ConvenientController {
         }
     }
 
+    private void deleteConvenient() {
+        System.out.println("Enter id: ");
+        int id = ComponentContainer.intScanner.nextInt();
+        convenientService.deleteById(id);
+    }
+
+    private void convenientList() {
+        List<ConvenientEntity> convenientEntities = convenientRepository.geAll();
+        convenientEntities.forEach(System.out::println);
+    }
+
     private void addConvenient() {
-        
+        System.out.println("Enter name:");
+        String name = ComponentContainer.strScanner.nextLine();
+        convenientService.addConvenient(name);
     }
 
     public void menu(){

@@ -29,7 +29,7 @@ public class RoomRepository {
         transaction.commit();
         session.close();
     }
-    public RoomEntity getRoomByNum(Integer number,Integer stage){
+    public List<RoomEntity> getRoomByNum(Integer number,Integer stage){
         StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
         Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
         SessionFactory factory = meta.getSessionFactoryBuilder().build();
@@ -37,9 +37,9 @@ public class RoomRepository {
         Query<RoomEntity> query = session.createQuery("from RoomEntity WHERE number=:number and stage=:stage", RoomEntity.class);
         query.setParameter("number",number);
         query.setParameter("stage",stage);
-        RoomEntity singleResult = query.getSingleResult();
+        List<RoomEntity> list = query.getResultList();
         session.close();
-        return singleResult;
+        return list;
     }
     public List<RoomEntity> getAll(){
         Session session = sessionFactory.openSession();
@@ -52,18 +52,15 @@ public class RoomRepository {
 
     public RoomEntity getById(int id) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
         RoomEntity roomEntity = session.find(RoomEntity.class, id);
         session.close();
-        transaction.commit();
         return roomEntity;
     }
     public void deleteById(int id){
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.createQuery("delete from RoomEntity where id=:id ");
+        Query query = session.createQuery("delete from RoomEntity where id=:id ");
+        query.setParameter("id",id);
         session.close();
-        transaction.commit();
     }
 
     public void update(RoomEntity byId) {
