@@ -1,6 +1,5 @@
 package org.example.sevice;
 
-import org.example.dto.Room;
 import org.example.entity.RoomEntity;
 import org.example.enums.RoomType;
 import org.example.repository.RoomRepository;
@@ -8,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AdminService {
+public class RoomService {
     @Autowired
     private RoomRepository roomRepository;
     public boolean addRoom(int number, Integer stage, RoomType type, Double price, int area) {
@@ -16,7 +15,7 @@ public class AdminService {
         if(roomByNum != null){
             return false;
         }
-        Room room=new Room();
+        RoomEntity room=new RoomEntity();
         room.setNumber(number);
         room.setStage(stage);
         room.setType(type);
@@ -24,5 +23,28 @@ public class AdminService {
         room.setArea(area);
         roomRepository.save(room);
         return true;
+    }
+
+    public void deleteById(int id) {
+        RoomEntity byId = roomRepository.getById(id);
+        if(byId != null){
+            return;
+        }
+        roomRepository.deleteById(id);
+    }
+
+    public void updateRoom(int id, int number, Integer stage, RoomType type, Double price, int area) {
+        RoomEntity byId = roomRepository.getById(id);
+        if (byId != null){
+            return;
+        }
+        RoomEntity room=new RoomEntity();
+        room.setId(id);
+        room.setId(number);
+        room.setPrice(price);
+        room.setStage(stage);
+        room.setType(type);
+        room.setArea(area);
+        roomRepository.update(room);
     }
 }

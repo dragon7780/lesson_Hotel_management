@@ -1,17 +1,18 @@
 package org.example.controller;
 
 import org.example.component.ComponentContainer;
-import org.example.enums.RoomType;
-import org.example.sevice.AdminService;
+import org.example.sevice.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class AdminController {
     @Autowired
-    private AdminService adminService;
+    private RoomService roomService;
     @Autowired
     private RoomController roomController;
+    @Autowired
+    private ConvenientController convenientController;
     public void start(){
         Boolean isTrue=true;
         while (isTrue){
@@ -39,7 +40,7 @@ public class AdminController {
         roomController.start();
     }
     private void convenient() {
-
+        convenientController.start();
     }
 
     private void employeeType() {

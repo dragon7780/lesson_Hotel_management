@@ -1,0 +1,12 @@
+package org.example.sevice;
+
+import org.example.repository.ConvenientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ConvenientService {
+    @Autowired
+    private ConvenientRepository convenientRepository;
+
+}
