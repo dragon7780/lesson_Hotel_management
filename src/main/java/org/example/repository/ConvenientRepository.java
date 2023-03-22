@@ -29,7 +29,6 @@ public class ConvenientRepository {
         ConvenientEntity convenient = session.find(ConvenientEntity.class, id);
         return convenient;
     }
-
     public void save(RoomConvenientEntity roomConvenientEntity){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -44,7 +43,6 @@ public class ConvenientRepository {
         List<ConvenientEntity> resultList = nativeQuery.getResultList();
         return resultList;
     }
-
     public void deleteById(int id) {
         Session session = sessionFactory.openSession();
         Query query = session.createQuery("delete from ConvenientEntity where id=:id");

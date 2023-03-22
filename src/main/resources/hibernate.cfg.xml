@@ -8,12 +8,14 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Atto</property>
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
-        <property name="show_sql">false</property>
+        <property name="show_sql">true</property>
 
         <!-- MAPPINGS -->
         <mapping class="org.example.entity.RoomEntity"/>
         <mapping class="org.example.dto.Room"/>
         <mapping class="org.example.entity.ConvenientEntity"/>
+        <mapping class="org.example.entity.RoomConvenientEntity"/>
+        <mapping class="org.example.entity.EmployeeTypeEntity"/>
     </session-factory>
 
 </hibernate-configuration>

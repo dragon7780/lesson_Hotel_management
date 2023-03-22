@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.component.ComponentContainer;
+import org.example.entity.EmployeeEntity;
 import org.example.sevice.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,10 @@ public class AdminController {
     private RoomController roomController;
     @Autowired
     private ConvenientController convenientController;
+    @Autowired
+    private EmployeeController employeeController;
+    @Autowired
+    private GuestController guestController;
     public void start(){
         Boolean isTrue=true;
         while (isTrue){
@@ -44,19 +49,18 @@ public class AdminController {
     }
 
     private void employeeType() {
-
+        employeeController.start();
     }
 
     private void employee() {
-
+        employeeController.start2();
     }
 
     private void guest() {
-
+        guestController.start();
     }
 
     private void booking() {
-
     }
 
     private void outcome() {
