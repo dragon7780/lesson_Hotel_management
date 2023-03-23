@@ -42,7 +42,7 @@ public class EmployeeService {
         employeeRepository.saveEmployee(employee);
         return true;
     }
-    private boolean checkingDate(String date) {
+    public boolean checkingDate(String date) {
         String[] split = date.split("-");
         if(split.length==0){
             return false;
@@ -52,7 +52,7 @@ public class EmployeeService {
         } else if (split[1].length() != 2) {
             System.err.println("Check moth!!! It must be 1-12");
             return false;
-        } else if (split[2].length() != 4) {
+        } else if (split[2].length() != 2) {
             System.err.println("Check day!!! It must be 1-31");
             return false;
         }else if (!split[0].matches("^[0-9]+$")){

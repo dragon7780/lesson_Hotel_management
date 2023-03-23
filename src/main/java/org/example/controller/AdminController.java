@@ -64,7 +64,6 @@ public class AdminController {
     }
 
     private void outcome() {
-
     }
 
     public void menu(){

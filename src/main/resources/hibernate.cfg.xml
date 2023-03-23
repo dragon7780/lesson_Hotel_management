@@ -16,6 +16,7 @@
         <mapping class="org.example.entity.ConvenientEntity"/>
         <mapping class="org.example.entity.RoomConvenientEntity"/>
         <mapping class="org.example.entity.EmployeeTypeEntity"/>
+        <mapping class="org.example.entity.GuestEntity"/>
     </session-factory>
 
 </hibernate-configuration>
